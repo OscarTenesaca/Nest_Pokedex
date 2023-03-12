@@ -11,9 +11,18 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      //agregar para dtos
+      transform: true, // para validar los dtos de flutter
+      transformOptions: {
+        enableImplicitConversion: true,
+      }
+
+
     })
   );
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
+
+  console.log(`App running on port ${process.env.PORT}`);
 }
 bootstrap();
